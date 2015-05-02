@@ -52,3 +52,6 @@ docs/_build/
 
 # PyBuilder
 target/
+.idea/.name
+*.xml
+.idea/GRASS_RECLAS.iml
