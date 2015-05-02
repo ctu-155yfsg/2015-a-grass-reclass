@@ -1,28 +1,23 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Reclassification tool for GRASS"""
+"""Subclass of wx.Panel"""
 
 #-----------------------------------------------------------------------------------------
 #Import
 try:
     #wxPython
-
+    import wx
     #python std library
     import sys
     #our modules and packages
-    from OurApp import OurApp
 
 except ImportError as err:
     print(u"ImportError: {}".format(err))
     sys.exit()
 #-----------------------------------------------------------------------------------------
+class PreviewPanel(wx.Panel):
 
-def main():
-    """Entry point"""
-    app = OurApp(redirect=False)    #redirect=False -> error output goes to command line
-    app.MainLoop()
-
-#-----------------------------------------------------------------------------------------
-if __name__ == "__main__":
-    main()
+    def __init__(self, parent, id):
+        wx.Panel.__init__(self, parent, id)
+        self.SetBackgroundColour('Blue')

@@ -11,16 +11,19 @@ try:
     #python std library
     import sys
     #our modules and packages
-    from OurFrame import OurFrame
+    from MainFrame import MainFrame
 
 except ImportError as err:
     print(u"ImportError: {}".format(err))
     sys.exit()
 #-----------------------------------------------------------------------------------------
 class OurApp(wx.App):
-
+    """
+    Subclass of wx.App
+    has one frame which is also a top level frame
+    """
     def OnInit(self):
-        self.mainFrame = OurFrame(parent = None, id = wx.NewId(), title = u"Reclass")
+        self.mainFrame = MainFrame(parent = None, id = wx.NewId(), title = u"Reclass")
         self.SetTopWindow(self.mainFrame)
         self.mainFrame.Show()
         return True
