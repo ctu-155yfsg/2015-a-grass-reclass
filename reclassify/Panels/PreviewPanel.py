@@ -24,5 +24,44 @@ class PreviewPanel(wx.Panel):
     """
 
     def __init__(self, parent, id):
+
         wx.Panel.__init__(self, parent, id)
-        self.SetBackgroundColour('Blue')
+
+        #PREVIEW
+        self.__buildPreviewPanel()
+        #LAYOUT
+        self.__layout()
+
+        #self.SetBackgroundColour('Blue')
+    #-----------------------------------------------------------------------------------------
+
+
+    def __buildPreviewPanel(self):
+        """
+        Creates preview panel.
+        Preview is displayed using wx.StaticBitmap
+        :return: void
+        """
+        self.previewPanel = wx.Panel(self, wx.NewId())
+        image = wx.Image("D:/GRASS_RECLAS/test.jpg", wx.BITMAP_TYPE_JPEG)
+        temp = image.ConvertToBitmap()
+        self.preview = wx.StaticBitmap(self.previewPanel, bitmap=temp)
+
+        Box = wx.BoxSizer(wx.HORIZONTAL)
+        Box.Add(self.preview, 0, wx.ALIGN_CENTER)
+        self.previewPanel.SetSizer(Box)
+
+
+    #-----------------------------------------------------------------------------------------
+
+
+    def __layout(self):
+        """
+        Specifies final layout for PreviewPanel.
+        :return: void
+        """
+        sBox = wx.StaticBox(self, wx.NewId(), "Preview")
+        vBox = wx.StaticBoxSizer(sBox, wx.VERTICAL)
+        vBox.Add(self.previewPanel, wx.ALIGN_CENTER, wx.ALIGN_CENTER)
+        self.SetSizer(vBox)
+    #-----------------------------------------------------------------------------------------

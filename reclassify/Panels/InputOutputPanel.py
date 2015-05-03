@@ -47,7 +47,7 @@ class InputOutputPanel(wx.Panel):
         """
         self.inputPanel = wx.Panel(self, wx.NewId())
         self.input = wx.ComboBox(self.inputPanel, wx.NewId())
-        self.inputLabel = wx.StaticText(self.inputPanel, wx.NewId(), "Input Mapset")
+        self.inputLabel = wx.StaticText(self.inputPanel, wx.NewId(), "Input Mapset", size=(100, -1))
         inputBox = wx.BoxSizer(wx.HORIZONTAL)
         inputBox.Add(self.inputLabel, 0, wx.ALIGN_CENTER)
         inputBox.Add(self.input, wx.EXPAND, wx.ALIGN_CENTER)
@@ -62,7 +62,7 @@ class InputOutputPanel(wx.Panel):
         """
         self.fieldPanel = wx.Panel(self, wx.NewId())
         self.field = wx.ComboBox(self.fieldPanel, wx.NewId())
-        self.fieldLabel = wx.StaticText(self.fieldPanel, wx.NewId(), "Field")
+        self.fieldLabel = wx.StaticText(self.fieldPanel, wx.NewId(), "Field", size=(100, -1))
         fieldBox = wx.BoxSizer(wx.HORIZONTAL)
         fieldBox.Add(self.fieldLabel, 0, wx.ALIGN_CENTER)
         fieldBox.Add(self.field, wx.EXPAND, wx.ALIGN_CENTER)
@@ -77,7 +77,7 @@ class InputOutputPanel(wx.Panel):
         """
         self.outputPanel = wx.Panel(self, wx.NewId())
         self.output = wx.TextCtrl(self.outputPanel, wx.NewId())
-        self.outputLabel = wx.StaticText(self.outputPanel, wx.NewId(), "Output Mapset")
+        self.outputLabel = wx.StaticText(self.outputPanel, wx.NewId(), "Output Mapset", size=(100, -1))
         outputBox = wx.BoxSizer(wx.HORIZONTAL)
         outputBox.Add(self.outputLabel, 0, wx.ALIGN_CENTER)
         outputBox.Add(self.output, wx.EXPAND, wx.ALIGN_CENTER)
@@ -90,12 +90,12 @@ class InputOutputPanel(wx.Panel):
         Specifies final layout in InputOutputPanel.
         :return: void
         """
-        vGap = 5
+        margin = 5
         box = wx.StaticBox(self, wx.NewId(), "Input and Output")
         vBox = wx.StaticBoxSizer(box, wx.VERTICAL)
-        vBox.Add(self.inputPanel, 0, wx.ALL | wx.EXPAND, vGap)
-        vBox.Add(self.fieldPanel, 0, wx.ALL | wx.EXPAND, vGap)
-        vBox.Add(self.outputPanel, 0, wx.ALL | wx.EXPAND, vGap)
+        vBox.Add(self.inputPanel, 0, wx.ALL | wx.EXPAND, margin)
+        vBox.Add(self.fieldPanel, 0, wx.ALL | wx.EXPAND, margin)
+        vBox.Add(self.outputPanel, 0, wx.ALL | wx.EXPAND, margin)
         self.SetSizer(vBox)
     #-----------------------------------------------------------------------------------------
 
