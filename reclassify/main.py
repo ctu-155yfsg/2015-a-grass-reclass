@@ -19,7 +19,9 @@ except ImportError as err:
 #-----------------------------------------------------------------------------------------
 
 def main():
-    """Entry point"""
+    """
+    Entry point.
+    """
     app = OurApp(redirect=False)    #redirect=False -> error output goes to command line
     app.MainLoop()
 

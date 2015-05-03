@@ -23,8 +23,9 @@ except ImportError as err:
 
 class MainFrame(wx.Frame):
     """
-    Subclass of wx.Frame
-    Represents main window
+    Subclass of wx.Frame.
+    Top level frame.
+    Represents main window.
     """
     def __init__(self, parent, id, title):
 
@@ -32,6 +33,7 @@ class MainFrame(wx.Frame):
 
         self.topPanel = wx.Panel(self, wx.NewId())
         self.CreateStatusBar()
+        self.SetMinSize( (600, 600) )
 
         self.inputOutputPanel = InputOutputPanel(self.topPanel, wx.NewId())
         self.reclassifyPanel = ReclassifyPanel(self.topPanel, wx.NewId())

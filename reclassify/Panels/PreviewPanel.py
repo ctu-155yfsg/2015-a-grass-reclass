@@ -17,6 +17,11 @@ except ImportError as err:
     sys.exit()
 #-----------------------------------------------------------------------------------------
 class PreviewPanel(wx.Panel):
+    """
+    Subclass of wx.Panel.
+    Represents center part of the window.
+    Contains preview of the reclassified mapset.
+    """
 
     def __init__(self, parent, id):
         wx.Panel.__init__(self, parent, id)

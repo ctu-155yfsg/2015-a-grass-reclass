@@ -17,6 +17,12 @@ except ImportError as err:
     sys.exit()
 #-----------------------------------------------------------------------------------------
 class ReclassifyPanel(wx.Panel):
+    """
+    Subclass of wx.Panel.
+    Represents top-right part of the window.
+    Contains reclassification table, delete entry
+    button and add entry button.
+    """
 
     def __init__(self, parent, id):
         wx.Panel.__init__(self, parent, id)

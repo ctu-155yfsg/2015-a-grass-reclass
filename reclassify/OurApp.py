@@ -20,7 +20,7 @@ except ImportError as err:
 class OurApp(wx.App):
     """
     Subclass of wx.App
-    has one frame which is also a top level frame
+    Has only one frame which is also a top level frame.
     """
     def OnInit(self):
         self.mainFrame = MainFrame(parent = None, id = wx.NewId(), title = u"Reclass")

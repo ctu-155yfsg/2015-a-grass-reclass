@@ -17,7 +17,15 @@ except ImportError as err:
     sys.exit()
 #-----------------------------------------------------------------------------------------
 class ControlPanel(wx.Panel):
+    """
+    Subclass of wx.Panel.
+    Represents bottom part of the window.
+    Contains progress bar (reclassification),
+    reclassify button and cancel button.
+    """
 
     def __init__(self, parent, id):
+
         wx.Panel.__init__(self, parent, id)
+
         self.SetBackgroundColour('Yellow')
