@@ -29,28 +29,35 @@ class MainFrame(wx.Frame):
     """
     def __init__(self, parent, id, title):
 
-        wx.Frame.__init__(self, parent, id, title, size = (750, 800))
+        wx.Frame.__init__(self, parent, id, title, size = (1000, 600))
+
+        self.CreateStatusBar()
+        self.SetMinSize( (1000, 600) )
 
         self.topPanel = wx.Panel(self, wx.NewId())
-        self.CreateStatusBar()
-        self.SetMinSize( (600, 600) )
+        self.leftPanel = wx.Panel(self.topPanel, wx.NewId())
 
-        self.inputOutputPanel = InputOutputPanel(self.topPanel, wx.NewId())
-        self.reclassifyPanel = ReclassifyPanel(self.topPanel, wx.NewId())
-        self.previewPanel = PreviewPanel(self, wx.NewId())
+        self.inputOutputPanel = InputOutputPanel(self.leftPanel, wx.NewId())
+        self.reclassifyPanel = ReclassifyPanel(self.leftPanel, wx.NewId())
+        self.previewPanel = PreviewPanel(self.topPanel, wx.NewId())
         self.controlPanel = ControlPanel(self, wx.NewId())
 
-        hBox = wx.BoxSizer(wx.HORIZONTAL)
-        hBox.Add(self.inputOutputPanel, wx.EXPAND, 0)
-        hBox.Add(self.reclassifyPanel, wx.EXPAND, 0)
-        self.topPanel.SetSizer(hBox)
+        leftPanelvBox = wx.BoxSizer(wx.VERTICAL)
+        leftPanelvBox.Add(self.inputOutputPanel, 0, 0)
+        leftPanelvBox.Add(self.reclassifyPanel, 0, 0)
+        self.leftPanel.SetSizer(leftPanelvBox)
+
+        topPanelhBox = wx.BoxSizer(wx.HORIZONTAL)
+        topPanelhBox.Add(self.leftPanel, 0, wx.EXPAND)
+        topPanelhBox.Add(self.previewPanel, wx.EXPAND, wx.EXPAND)
+        self.topPanel.SetSizer(topPanelhBox)
 
         vBox = wx.BoxSizer(wx.VERTICAL)
-        vBox.Add(self.topPanel, 0, wx.EXPAND)
-        vBox.Add(self.previewPanel, wx.EXPAND, wx.EXPAND)
+        vBox.Add(self.topPanel, wx.EXPAND, wx.EXPAND)
         vBox.Add(self.controlPanel, 0, wx.EXPAND)
 
         self.SetSizer(vBox)
+
 
 #-----------------------------------------------------------------------------------------
 if __name__ == "__main__":

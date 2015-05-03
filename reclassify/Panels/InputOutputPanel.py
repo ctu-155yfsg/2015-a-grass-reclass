@@ -37,6 +37,7 @@ class InputOutputPanel(wx.Panel):
         self.__buildOutputPanel()
         #LAYOUT
         self.__layout()
+        self.SetMinSize((400, -1))
     #-----------------------------------------------------------------------------------------
 
 
