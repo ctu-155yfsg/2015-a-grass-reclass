@@ -60,7 +60,7 @@ class Controler:
         :return: void
         """
         self.app.mainFrame.reclassifyPanel.table.AppendRows(numRows=1)
-        self.app.mainFrame.leftPanel.Layout()
+        #self.app.mainFrame.leftPanel.Layout()
     #-----------------------------------------------------------------------------------------
 
 
@@ -75,7 +75,7 @@ class Controler:
         for I in range(len(selectedRow), 0, -1):
             self.app.mainFrame.reclassifyPanel.table.DeleteRows(pos=I, numRows=1)
 
-        self.app.mainFrame.leftPanel.Layout()
+        #self.app.mainFrame.leftPanel.Layout()
     #-----------------------------------------------------------------------------------------
 
 

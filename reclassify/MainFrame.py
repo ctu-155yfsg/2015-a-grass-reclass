@@ -44,7 +44,7 @@ class MainFrame(wx.Frame):
 
         leftPanelvBox = wx.BoxSizer(wx.VERTICAL)
         leftPanelvBox.Add(self.inputOutputPanel, 0, 0)
-        leftPanelvBox.Add(self.reclassifyPanel, 0, 0)
+        leftPanelvBox.Add(self.reclassifyPanel, wx.EXPAND, 0)
         self.leftPanel.SetSizer(leftPanelvBox)
 
         topPanelhBox = wx.BoxSizer(wx.HORIZONTAL)
