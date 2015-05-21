@@ -10,11 +10,14 @@ try:
     import wx
     #python std library
     import sys
+    #GRASS modules and packages
+    from modules.colorrules import BufferedWindow
+    from core.render import Map
     #our modules and packages
 
 except ImportError as err:
     print(u"ImportError: {}".format(err))
-    sys.exit()
+    sys.exit("-1")
 #-----------------------------------------------------------------------------------------
 class PreviewPanel(wx.Panel):
     """
@@ -31,8 +34,7 @@ class PreviewPanel(wx.Panel):
         self.__buildPreviewPanel()
         #LAYOUT
         self.__layout()
-
-        #self.SetBackgroundColour('Blue')
+        #self.previewPanel.Hide() #hidden when no preview active
     #-----------------------------------------------------------------------------------------
 
 
@@ -43,9 +45,16 @@ class PreviewPanel(wx.Panel):
         :return: void
         """
         self.previewPanel = wx.Panel(self, wx.NewId())
-        image = wx.Image("D:/GRASS_RECLAS/test.jpg", wx.BITMAP_TYPE_JPEG)
-        temp = image.ConvertToBitmap()
-        self.preview = wx.StaticBitmap(self.previewPanel, bitmap=temp)
+        #image = wx.Image("D:/GRASS_RECLAS/test.jpg", wx.BITMAP_TYPE_JPEG)
+        #temp = image.ConvertToBitmap()
+        #self.preview = wx.StaticBitmap(self.previewPanel, bitmap=temp)
+
+        self.map = Map()
+        #self.map.AddLayer(ltype='raster', name='elevation@PERMANENT')
+
+        self.preview = BufferedWindow(parent=self.previewPanel,
+                                      id=wx.NewId(),
+                                      Map=self.map)
 
         Box = wx.BoxSizer(wx.HORIZONTAL)
         Box.Add(self.preview, 0, wx.ALIGN_CENTER)
@@ -65,3 +74,7 @@ class PreviewPanel(wx.Panel):
         vBox.Add(self.previewPanel, wx.ALIGN_CENTER, wx.ALIGN_CENTER)
         self.SetSizer(vBox)
     #-----------------------------------------------------------------------------------------
+
+
+if __name__ == "__main__":
+    pass

@@ -9,13 +9,14 @@ try:
     #wxPython
     import wx
     import wx.grid
+    import wx.lib.scrolledpanel
     #python std library
     import sys
     #our modules and packages
 
 except ImportError as err:
     print(u"ImportError: {}".format(err))
-    sys.exit()
+    sys.exit("-1")
 #-----------------------------------------------------------------------------------------
 class ReclassifyPanel(wx.Panel):
     """
@@ -29,7 +30,7 @@ class ReclassifyPanel(wx.Panel):
 
         wx.Panel.__init__(self, parent, id)
         #TABLE
-        self.nCol = 2
+        self.tableCol = 3
         self.__buildTable()
         #BUTTONS
         self.__buildButtonPanel()
@@ -46,15 +47,21 @@ class ReclassifyPanel(wx.Panel):
         :return: void
         """
         self.tablePanel = wx.Panel(self, wx.NewId())
+        #self.tablePanel = wx.lib.scrolledpanel.ScrolledPanel(self, wx.NewId(), size=(200,300))
+        #self.tablePanel.SetupScrolling()
         self.table = wx.grid.Grid(self.tablePanel)
-        self.table.CreateGrid(10, self.nCol)
+        self.table.CreateGrid(0, self.tableCol)
 
-        self.table.SetColLabelValue(0, "Range")
-        self.table.SetColLabelValue(1, "Value")
+        self.table.SetColLabelValue(0, "Lower limit")
+        self.table.SetColLabelValue(1, "Upper limit")
+        self.table.SetColLabelValue(2, "Value")
 
-        for row in range(10):
-            for col in range(self.nCol):
-                self.table.SetCellValue(row, col, "({}, {})".format(row, col))
+        self.table.SetDefaultEditor(wx.grid.GridCellNumberEditor(-1, -1))
+        #for row in range(10):
+        #    for col in range(self.nCol):
+        #        self.table.SetCellValue(row, col, "({}, {})".format(row, col))
+
+
 
         box = wx.BoxSizer(wx.HORIZONTAL)
         box.Add(self.table, wx.EXPAND, wx.EXPAND)
@@ -70,10 +77,12 @@ class ReclassifyPanel(wx.Panel):
         self.buttonPanel = wx.Panel(self, wx.NewId())
         self.addButton = wx.Button(self.buttonPanel, wx.NewId(), "Add", size=(100, -1))
         self.deleteButton = wx.Button(self.buttonPanel, wx.NewId(), "Delete", size=(100, -1))
+        self.previewButton = wx.Button(self.buttonPanel, wx.NewId(), "Preview", size=(100, -1))
 
         vBox = wx.BoxSizer(wx.VERTICAL)
         vBox.Add(self.addButton, 0, wx.ALIGN_CENTER)
         vBox.Add(self.deleteButton, 0, wx.ALIGN_CENTER)
+        vBox.Add(self.previewButton, 0, wx.ALIGN_CENTER)
         self.buttonPanel.SetSizer(vBox)
     #-----------------------------------------------------------------------------------------
 
@@ -90,3 +99,7 @@ class ReclassifyPanel(wx.Panel):
         hBox.Add(self.buttonPanel, 0, wx.ALL | wx.ALIGN_TOP, margin)
         self.SetSizer(hBox)
     #-----------------------------------------------------------------------------------------
+
+
+if __name__ == "__main__":
+    pass

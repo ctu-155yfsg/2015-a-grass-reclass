@@ -14,7 +14,7 @@ try:
 
 except ImportError as err:
     print(u"ImportError: {}".format(err))
-    sys.exit()
+    sys.exit("-1")
 #-----------------------------------------------------------------------------------------
 class ControlPanel(wx.Panel):
     """
@@ -35,7 +35,7 @@ class ControlPanel(wx.Panel):
         #LAYOUT
         self.__layout()
 
-        #self.SetBackgroundColour('Yellow')
+        self.progressBar.Hide()
     #-----------------------------------------------------------------------------------------
 
 
@@ -83,3 +83,7 @@ class ControlPanel(wx.Panel):
         vBox.Add(self.buttonPanel, 0, wx.ALL | wx.ALIGN_RIGHT, margin)
         self.SetSizer(vBox)
     #-----------------------------------------------------------------------------------------
+
+
+if __name__ == "__main__":
+    pass

@@ -11,14 +11,14 @@ try:
     #python std library
     import sys
     #our modules and packages
-    from Panels.InputOutputPanel import InputOutputPanel
-    from Panels.ControlPanel import ControlPanel
-    from Panels.PreviewPanel import PreviewPanel
-    from Panels.ReclassifyPanel import ReclassifyPanel
+    from Layout.InputOutputPanel import InputOutputPanel
+    from Layout.ControlPanel import ControlPanel
+    from Layout.PreviewPanel import PreviewPanel
+    from Layout.ReclassifyPanel import ReclassifyPanel
 
 except ImportError as err:
     print(u"ImportError: {}".format(err))
-    sys.exit()
+    sys.exit("-1")
 #-----------------------------------------------------------------------------------------
 
 class MainFrame(wx.Frame):
@@ -31,7 +31,7 @@ class MainFrame(wx.Frame):
 
         wx.Frame.__init__(self, parent, id, title, size = (1000, 600))
 
-        self.CreateStatusBar()
+        self.statustBar = self.CreateStatusBar()
         self.SetMinSize( (1000, 600) )
 
         self.topPanel = wx.Panel(self, wx.NewId())

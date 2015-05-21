@@ -10,11 +10,13 @@ try:
     import wx
     #python std library
     import sys
+    #Grass modules nad packages
+    from gui_core.gselect import Select
     #our modules and packages
 
 except ImportError as err:
     print(u"ImportError: {}".format(err))
-    sys.exit()
+    sys.exit("-1")
 #-----------------------------------------------------------------------------------------
 
 class InputOutputPanel(wx.Panel):
@@ -32,12 +34,14 @@ class InputOutputPanel(wx.Panel):
         #INPUT
         self.__buildInputPanel()
         #FIELD
-        self.__buildFiedlPanel()
+        self.__buildFieldPanel()
         #OUTPUT
         self.__buildOutputPanel()
         #LAYOUT
         self.__layout()
         self.SetMinSize((400, -1))
+
+        self.fieldPanel.Hide() #may not be needed at all
     #-----------------------------------------------------------------------------------------
 
 
@@ -47,8 +51,9 @@ class InputOutputPanel(wx.Panel):
         :return: void
         """
         self.inputPanel = wx.Panel(self, wx.NewId())
-        self.input = wx.ComboBox(self.inputPanel, wx.NewId())
-        self.inputLabel = wx.StaticText(self.inputPanel, wx.NewId(), "Input Mapset", size=(100, -1))
+        #self.input = wx.ComboBox(self.inputPanel, wx.NewId())
+        self.input = Select(self.inputPanel, wx.NewId(), type='raster')
+        self.inputLabel = wx.StaticText(self.inputPanel, wx.NewId(), "Input raster map", size=(120, -1))
         inputBox = wx.BoxSizer(wx.HORIZONTAL)
         inputBox.Add(self.inputLabel, 0, wx.ALIGN_CENTER)
         inputBox.Add(self.input, wx.EXPAND, wx.ALIGN_CENTER)
@@ -56,14 +61,14 @@ class InputOutputPanel(wx.Panel):
     #-----------------------------------------------------------------------------------------
 
 
-    def __buildFiedlPanel(self):
+    def __buildFieldPanel(self):
         """
         Creates field combo box with label.
         :return: void
         """
         self.fieldPanel = wx.Panel(self, wx.NewId())
         self.field = wx.ComboBox(self.fieldPanel, wx.NewId())
-        self.fieldLabel = wx.StaticText(self.fieldPanel, wx.NewId(), "Field", size=(100, -1))
+        self.fieldLabel = wx.StaticText(self.fieldPanel, wx.NewId(), "Field", size=(120, -1))
         fieldBox = wx.BoxSizer(wx.HORIZONTAL)
         fieldBox.Add(self.fieldLabel, 0, wx.ALIGN_CENTER)
         fieldBox.Add(self.field, wx.EXPAND, wx.ALIGN_CENTER)
@@ -77,8 +82,9 @@ class InputOutputPanel(wx.Panel):
         :return: void
         """
         self.outputPanel = wx.Panel(self, wx.NewId())
-        self.output = wx.TextCtrl(self.outputPanel, wx.NewId())
-        self.outputLabel = wx.StaticText(self.outputPanel, wx.NewId(), "Output Mapset", size=(100, -1))
+        #self.output = wx.TextCtrl(self.outputPanel, wx.NewId())
+        self.output = Select(self.outputPanel, wx.NewId(), type='raster')
+        self.outputLabel = wx.StaticText(self.outputPanel, wx.NewId(), "Output raster map", size=(120, -1))
         outputBox = wx.BoxSizer(wx.HORIZONTAL)
         outputBox.Add(self.outputLabel, 0, wx.ALIGN_CENTER)
         outputBox.Add(self.output, wx.EXPAND, wx.ALIGN_CENTER)
@@ -101,3 +107,5 @@ class InputOutputPanel(wx.Panel):
     #-----------------------------------------------------------------------------------------
 
 
+if __name__ == "__main__":
+    pass

@@ -15,7 +15,7 @@ try:
 
 except ImportError as err:
     print(u"ImportError: {}".format(err))
-    sys.exit()
+    sys.exit("-1")
 #-----------------------------------------------------------------------------------------
 class OurApp(wx.App):
     """
