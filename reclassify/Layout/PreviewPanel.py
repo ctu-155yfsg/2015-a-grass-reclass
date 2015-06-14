@@ -43,22 +43,17 @@ class PreviewPanel(wx.Panel):
         Creates preview panel.
         :return: void
         """
+        #Output preview
+        self.map = Map()
+        self.width = self.map.width = 400
+        self.height = self.map.height = 300
+        self.map.geom = self.width, self.height
 
-        try:
-            #Output preview
-            self.map = Map()
-            self.width = self.map.width = 400
-            self.height = self.map.height = 300
-            self.map.geom = self.width, self.height
-
-            self.preview = BufferedWindow(parent=self,
-                                          id=wx.NewId(),
-                                          size = (400, 300),
-                                          Map=self.map)
-            self.preview.EraseMap()
-
-        except Exception as err:
-            print(err)
+        self.preview = BufferedWindow(parent=self,
+                                      id=wx.NewId(),
+                                      size = (400, 300),
+                                      Map=self.map)
+        self.preview.EraseMap()
 
 
     #-----------------------------------------------------------------------------------------
@@ -69,10 +64,11 @@ class PreviewPanel(wx.Panel):
         Specifies final layout for PreviewPanel.
         :return: void
         """
-
         sBox = wx.StaticBox(self, wx.NewId(), "Preview")
         vBox = wx.StaticBoxSizer(sBox, wx.VERTICAL)
-        vBox.Add(self.preview, wx.ALIGN_CENTER, wx.ALIGN_CENTER)
+        vBox.AddStretchSpacer()
+        vBox.Add(self.preview, 0, wx.CENTER)
+        vBox.AddStretchSpacer()
         self.SetSizer(vBox)
     #-----------------------------------------------------------------------------------------
 

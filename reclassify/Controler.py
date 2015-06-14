@@ -41,7 +41,7 @@ class Controler:
         self.app = OurAppObject
 
         #BINDINGS
-        self.app.mainFrame.controlPanel.reclassifyButton.Bind(wx.EVT_BUTTON, self.__reclassifyButtonClicked)
+        self.app.mainFrame.controlPanel.okButton.Bind(wx.EVT_BUTTON, self.__okButtonClicked)
         self.app.mainFrame.controlPanel.cancelButton.Bind(wx.EVT_BUTTON, self.__cancelButtonClicked)
 
         self.app.mainFrame.reclassifyPanel.addButton.Bind(wx.EVT_BUTTON, self.__addButtonClicked)
@@ -196,7 +196,7 @@ class Controler:
         else:
             return False
 
-    def __reclassifyButtonClicked(self, event):
+    def __okButtonClicked(self, event):
         """
         Makes reclassification and saves new map
         :param event:

@@ -45,11 +45,11 @@ class ControlPanel(wx.Panel):
         :return: void
         """
         self.buttonPanel = wx.Panel(self, wx.NewId())
-        self.reclassifyButton = wx.Button(self.buttonPanel, wx.NewId(), "Reclassify", size=(100, -1))
+        self.okButton = wx.Button(self.buttonPanel, wx.NewId(), "Ok", size=(100, -1))
         self.cancelButton = wx.Button(self.buttonPanel, wx.NewId(), "Cancel", size=(100, -1))
 
         hBox = wx.BoxSizer(wx.HORIZONTAL)
-        hBox.Add(self.reclassifyButton, 0, wx.ALIGN_CENTER)
+        hBox.Add(self.okButton, 0, wx.ALIGN_CENTER)
         hBox.Add(self.cancelButton, 0, wx.ALIGN_CENTER)
         self.buttonPanel.SetSizer(hBox)
 
