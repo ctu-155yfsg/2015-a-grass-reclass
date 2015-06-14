@@ -58,7 +58,7 @@ class ReclassifyPanel(wx.Panel):
         self.table.SetColLabelValue(1, "Upper limit")
         self.table.SetColLabelValue(2, "Value")
 
-        self.table.SetDefaultEditor(wx.grid.GridCellNumberEditor(-1, -1))
+        self.table.SetDefaultEditor(wx.grid.GridCellFloatEditor(-1, -1))
 
         box = wx.BoxSizer(wx.VERTICAL)
         box.Add(self.table, wx.EXPAND, wx.CENTER)

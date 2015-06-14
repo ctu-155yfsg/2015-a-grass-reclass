@@ -51,12 +51,13 @@ class InputOutputPanel(wx.Panel):
         :return: void
         """
         self.inputPanel = wx.Panel(self, wx.NewId())
-        #self.input = wx.ComboBox(self.inputPanel, wx.NewId())
         self.input = Select(self.inputPanel, wx.NewId(), type='raster')
         self.inputLabel = wx.StaticText(self.inputPanel, wx.NewId(), "Input raster map", size=(120, -1))
+
         inputBox = wx.BoxSizer(wx.HORIZONTAL)
         inputBox.Add(self.inputLabel, 0, wx.ALIGN_CENTER)
         inputBox.Add(self.input, wx.EXPAND, wx.ALIGN_CENTER)
+
         self.inputPanel.SetSizer(inputBox)
     #-----------------------------------------------------------------------------------------
 

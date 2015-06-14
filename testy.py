@@ -1,14 +1,6 @@
 import re
 
-x = '150-210'
-
-y = re.split('-', x)
-
-a, b = y
+x = [2, 1, 3, 0]
+a = sorted(x, reverse=True)
 
 print(a)
-print(b)
-
-c = []
-c.append([a, b])
-print(c)

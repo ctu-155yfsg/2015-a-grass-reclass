@@ -41,24 +41,24 @@ class PreviewPanel(wx.Panel):
     def __buildPreviewPanel(self):
         """
         Creates preview panel.
-        Preview is displayed using wx.StaticBitmap
         :return: void
         """
-        self.previewPanel = wx.Panel(self, wx.NewId())
-        #image = wx.Image("D:/GRASS_RECLAS/test.jpg", wx.BITMAP_TYPE_JPEG)
-        #temp = image.ConvertToBitmap()
-        #self.preview = wx.StaticBitmap(self.previewPanel, bitmap=temp)
 
-        self.map = Map()
-        #self.map.AddLayer(ltype='raster', name='elevation@PERMANENT')
+        try:
+            #Output preview
+            self.map = Map()
+            self.width = self.map.width = 400
+            self.height = self.map.height = 300
+            self.map.geom = self.width, self.height
 
-        self.preview = BufferedWindow(parent=self.previewPanel,
-                                      id=wx.NewId(),
-                                      Map=self.map)
+            self.preview = BufferedWindow(parent=self,
+                                          id=wx.NewId(),
+                                          size = (400, 300),
+                                          Map=self.map)
+            self.preview.EraseMap()
 
-        Box = wx.BoxSizer(wx.HORIZONTAL)
-        Box.Add(self.preview, 0, wx.ALIGN_CENTER)
-        self.previewPanel.SetSizer(Box)
+        except Exception as err:
+            print(err)
 
 
     #-----------------------------------------------------------------------------------------
@@ -69,9 +69,10 @@ class PreviewPanel(wx.Panel):
         Specifies final layout for PreviewPanel.
         :return: void
         """
+
         sBox = wx.StaticBox(self, wx.NewId(), "Preview")
         vBox = wx.StaticBoxSizer(sBox, wx.VERTICAL)
-        vBox.Add(self.previewPanel, wx.ALIGN_CENTER, wx.ALIGN_CENTER)
+        vBox.Add(self.preview, wx.ALIGN_CENTER, wx.ALIGN_CENTER)
         self.SetSizer(vBox)
     #-----------------------------------------------------------------------------------------
 
