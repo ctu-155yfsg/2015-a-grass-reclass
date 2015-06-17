@@ -30,7 +30,7 @@ class ReclassifyPanel(wx.Panel):
 
         wx.Panel.__init__(self, parent, id)
         #TABLE
-        self.tableCol = 3
+        self.tableCol = 4
         self.__buildTable()
         #BUTTONS
         self.__buildButtonPanel()
@@ -47,16 +47,14 @@ class ReclassifyPanel(wx.Panel):
         :return: void
         """
         self.tablePanel = wx.Panel(self, wx.NewId())
-        #self.tablePanel.SetMaxSize((400, 400))
-        #self.tablePanel = wx.lib.scrolledpanel.ScrolledPanel(self, wx.NewId(), size=(200,300))
-        #self.tablePanel.SetupScrolling()
         self.table = wx.grid.Grid(self.tablePanel)
-        self.table.SetMinSize((350, -1))
+        self.table.SetMinSize((430, -1))
         self.table.CreateGrid(0, self.tableCol)
 
         self.table.SetColLabelValue(0, "Lower limit")
         self.table.SetColLabelValue(1, "Upper limit")
         self.table.SetColLabelValue(2, "Value")
+        self.table.SetColLabelValue(3, "Label")
 
         self.table.SetDefaultEditor(wx.grid.GridCellFloatEditor(-1, -1))
 

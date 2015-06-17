@@ -61,6 +61,8 @@ class Controler:
         :return: void
         """
         self.app.mainFrame.reclassifyPanel.table.AppendRows(numRows=1)
+        rowsNumber = self.app.mainFrame.reclassifyPanel.table.GetNumberRows()
+        self.app.mainFrame.reclassifyPanel.table.SetCellEditor(rowsNumber - 1, 3, wx.grid.GridCellTextEditor())
     #-----------------------------------------------------------------------------------------
 
 
@@ -174,9 +176,10 @@ class Controler:
             fr = self.app.mainFrame.reclassifyPanel.table.GetCellValue(row, 0)
             to = self.app.mainFrame.reclassifyPanel.table.GetCellValue(row, 1)
             equals = self.app.mainFrame.reclassifyPanel.table.GetCellValue(row, 2)
+            label = self.app.mainFrame.reclassifyPanel.table.GetCellValue(row, 3)
 
-            tempRulesFile.write('{} thru {} = {}\n'.format(fr, to, equals))
-
+            tempRulesFile.write('{} thru {} = {} {}\n'.format(fr, to, equals, label))
+            
         #tempRulesFile.write('* = NULL')
         tempRulesFile.write('end')
 
@@ -248,10 +251,6 @@ class Controler:
                     name = "{}".format(rasterName))
     #-----------------------------------------------------------------------------------------
 
-    def __initializeReclassTable(self):
-        pass
-    #-----------------------------------------------------------------------------------------
-
 
     def __onInputRasterSelect(self, event, intNum=10):
         """
@@ -278,6 +277,8 @@ class Controler:
             i = 0
             for interval in intervals:
                 self.app.mainFrame.reclassifyPanel.table.AppendRows(numRows=1)
+                rowsNumber = self.app.mainFrame.reclassifyPanel.table.GetNumberRows()
+                self.app.mainFrame.reclassifyPanel.table.SetCellEditor(rowsNumber - 1, 3, wx.grid.GridCellTextEditor())
                 self.app.mainFrame.reclassifyPanel.table.SetCellValue(i,0,str(interval[0]))
                 self.app.mainFrame.reclassifyPanel.table.SetCellValue(i,1,str(interval[1]))
                 self.app.mainFrame.reclassifyPanel.table.SetCellValue(i,2,str(i))
