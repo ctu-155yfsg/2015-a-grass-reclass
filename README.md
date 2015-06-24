@@ -4,12 +4,12 @@ Semester project of 155YFSG class (academic year 2014/2015) CTU Prague Departmen
 
 * Group A
 
-# Authors
+### Authors
 
 * Rokusek Jaromír
 * Svoboda Ondřej
 
-# Task
+### Task
 
 Create a GUI application which work as a wrapper for GRASS GIS reclassification tool. 
 This application should work as a plugin and it should be written in Python 2.x.x with usage of wxPython.
@@ -17,18 +17,18 @@ It has to be able to show a preview of reclassification.
 
 # Quick Guide
 
-# Introduction
+### Introduction
 
 This tool was made as a school project at the Czech Technical University in Prague - Department of Geomatic. 
 It is a GUI wrapper over GRASS reclassification tool. It is not a new implementation of a recllasification tool itself. 
 It’s just a GUI application that uses the old recllasification tool and it is ment to be easier to use and also more practical.
 
-# Advantages
+### Advantages
 * There is no need for reclassification rules file. 
 ** See [r.reclass](http://grass.osgeo.org/grass71/manuals/r.reclass.html) for more info on rules file.
 * There is a preview of a new reclassified map.
 
-# Usage
+### Usage
 Program is very simple. You just have to select input map which is the one you want to reclassify and you also have to specify where the output should be saved. 
 Output can be an existing map. In this case it is overwritten. But it  can also be a new non existing map. 
 In this case you just need to write it’s name into the output raster map field. Map with this name is automatically created into current mapset. 
