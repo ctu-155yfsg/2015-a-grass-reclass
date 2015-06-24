@@ -179,7 +179,7 @@ class Controler:
             label = self.app.mainFrame.reclassifyPanel.table.GetCellValue(row, 3)
 
             tempRulesFile.write('{} thru {} = {} {}\n'.format(fr, to, equals, label))
-            
+
         #tempRulesFile.write('* = NULL')
         tempRulesFile.write('end')
 
