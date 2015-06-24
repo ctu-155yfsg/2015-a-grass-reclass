@@ -48,7 +48,7 @@ Table can be adjusted by Add and Delete buttons, which are used to add or remove
 Reclassification rules are set by defining a range and it’s new value. Defining a label is optional. 
 Label is just a name for the category. Lower and Upper limits defines the range. It is a closed interval.
 Preview button is used for displaying a preview. Ok button confirms everything and performs reclassification. 
-Cancel button cancels everything and close the window.
+Cancel button cancels everything and closes the window.
 
 
 
