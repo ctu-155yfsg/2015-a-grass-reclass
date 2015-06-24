@@ -40,7 +40,7 @@ The table is automatically filled with some values when input map is selected.
 The main reason of that is that you can see minimum and maximum values present in a map. 
 But that’s not all. There is a statusbar which will help you even more. 
 It is displaying either range of values (image 1) or list of categories (image 2) present in the map based on the map type. 
-This decision is made by GRASS function r.describe.
+This decision is made by GRASS function [r.describe.](http://grass.osgeo.org/grass71/manuals/r.describe.html)
 
 ![image 2](/images/categories.jpg)
 
